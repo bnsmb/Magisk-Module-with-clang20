@@ -1,0 +1,7 @@
+id=clang20
+name=clang20 with ndk r29 beta1
+version=20.0.0git-v1.0.0-beta
+versionCode=3
+author=Bernd.Schemmer@gmx.de
+description=clang20, make, pkg-config, pkgconf, and the sysroot from the NDK r29 beta1 for Android
+

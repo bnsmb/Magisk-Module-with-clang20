@@ -1,0 +1,113 @@
+This Magisk module contains clang20, GNU make 4.4.1, pkg-config 0.29, pkgconf 2.3.0, and the files necessary from the Android NDK r29-beta1 for arm64 CPUs
+
+
+ASUS_I006D:/ $ clang --version                                                                                                                                                 
+clang version 20.0.0git (https://android.googlesource.com/toolchain/llvm-project b718bcaf8c198c82f3021447d943401e3ab5bd54)
+Target: aarch64-unknown-linux-android
+Thread model: posix
+InstalledDir: /system/usr/clang20/bin
+ASUS_I006D:/ 
+
+ASUS_I006D:/ $ file /system/usr/clang20/bin/clang-20                                                                                                                               
+/system/usr/clang20/bin/clang-20: ELF shared object, 64-bit LSB arm64, dynamic (/system/bin/linker64), for Android 21, built by NDK r27b (12297006), BuildID=7cf23a41b8849a1d6568c97b7cb000ad05933ee4, not stripped
+ASUS_I006D:/ $ 
+
+
+The clang20 files are in the directory 
+
+/system/usr/clang20
+
+
+The binaries for clang20, make, pkg-config, and pkgconf are in the directory
+
+/system/usr/clang20/bin
+
+
+The files from the NDK are in the directory
+
+/system/usr/ndk/r29-beta1
+
+The sysroot from the NDK is in the directory
+
+/system/usr/ndk/r29-beta1/sysroot
+
+
+Use the command 
+
+source /system/bin/init_clang20_env
+
+to init the environment for the clang20. This scripts defines all necessary environment variables (including the PATH variable) to use the clang.
+
+
+The script init_clang20_env executes the script
+
+/data/local/tmp/local_init_clang20_env
+
+if it exists (use the parameter "no_user" to disable the execution of that script)
+
+
+To use pkgconf instead of pkg-config set the variable PKG_CONFIG:
+
+export PKG_CONFIG=/system/usr/clang20/bin/pkgconf
+
+
+Use the command 
+
+/system/bin/init_clang20_env help
+
+to print the usage help for the init script
+
+
+Source Code used to create the binaries
+---------------------------------------
+
+The repo with the source code for the clang is:
+
+https://android.googlesource.com/toolchain/llvm-project
+
+The source code was checked out in 04/2025
+
+
+To get the source for clang20 use these commands: 
+
+git clone https://android.googlesource.com/toolchain/llvm-project
+
+cd llvm-project
+
+git checkout llvm-r547379-release
+
+
+See the file 
+
+source/myconfigure 
+
+in the Magisk Module for the cmake options used to prepare the build process for the clang20.
+The clang20 binaries were compiled on a machine running the Linux OS with the Cross Compiler from the Android NDK r27b
+
+
+The Android NDKs are available here:
+
+https://developer.android.com/ndk/downloads
+
+
+The source code for the make binary is available here:
+
+https://ftp.gnu.org/gnu/make
+
+
+The source code for pkg-config is available here:
+
+https://pkgconfig.freedesktop.org/releases/
+
+
+The source code for pkgconf is available here
+
+https://github.com/pkgconf/pkgconf
+
+
+History
+
+18.04.2025 v1.0.0
+  initial release
+
+
