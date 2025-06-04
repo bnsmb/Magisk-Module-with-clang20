@@ -110,4 +110,6 @@ History
 18.04.2025 v1.0.0
   initial release
 
+04.06.2025 v1.0.1
+  added minor fixes to the script init_clang20_env
 
